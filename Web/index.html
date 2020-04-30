@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | webglBook</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <style>
+    .HIDEWHILEYOUCAN, .HIDEFOREVER {
+        display: none !important;
+    }
+    #start {
+        cursor: pointer;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" class="HIDEWHILEYOUCAN" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo HIDEWHILEYOUCAN"></div>
+        <div id="start" class="HIDEWHILEYOUCAN">START</div>
+        <div id="loading">LOADING...</div>
+        <div class="fullscreen HIDEWHILEYOUCAN" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title HIDEWHILEYOUCAN">webglBook</div>
+      </div>
+    </div>
+    <video id="video" class="HIDEFOREVER">
+      <source src="https://unity-webgl-book-advanced.surge.sh/lacrimosa2.webm" type="video/webm">
+      Your browser does not support HTML5 video.
+    </video>
+    <script>
+      var unityInstance;
+
+      var start = document.getElementById("start");        
+      var loading = document.getElementById("loading");        
+      var vid = document.getElementById("video");
+      vid.oncanplay = function() {
+        start.classList.remove("HIDEWHILEYOUCAN");
+        loading.classList.add("HIDEWHILEYOUCAN");
+      };
+      vid.load();
+
+      start.onclick = function() {
+          var elems = document.querySelectorAll(".HIDEWHILEYOUCAN");
+          [].forEach.call(elems, function(el) {
+              el.classList.remove("HIDEWHILEYOUCAN");
+          });
+          unityInstance = UnityLoader.instantiate("unityContainer", "Build/Web.json", {onProgress: UnityProgress});
+          start.remove();
+      };
+    </script>
+  </body>
+</html>
