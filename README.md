@@ -1,6 +1,6 @@
 # unityWeglBookAdvancedExample
 how to put a blender 3d model in the browser with unity
-and play around with sound and models from the [internet](https://www.turbosquid.com/Search/3D-Models/free/blend "it's free!").
+and play around with [sound](https://freesound.org "it's free!") and [3d models](https://www.turbosquid.com/Search/3D-Models/free/blend "it's free!") from the internet.
 
 [video tutorial](https://www.uploadedyet.com "Click")
 
